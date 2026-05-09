@@ -6,17 +6,14 @@ import java.util.Queue;
 
 public class Graph {
 
-    // Stores all vertices
+    //stores verticles
     private HashMap<Integer, Vertex> vertices;
 
-    // Adjacency list representation
-    // vertex id -> list of connected vertex ids
+    //vertex id -> list of connected vertex ids
     private HashMap<Integer, ArrayList<Integer>> adjacencyList;
 
-    // Stores all edges
     private ArrayList<Edge> edges;
 
-    // Constructor
     public Graph() {
 
         vertices = new HashMap<>();
@@ -26,10 +23,9 @@ public class Graph {
         edges = new ArrayList<>();
     }
 
-    // Add a new vertex
     public void addVertex(Vertex v) {
 
-        // Prevent duplicate vertices
+        //prevent duplicates
         if (!vertices.containsKey(v.getId())) {
 
             vertices.put(v.getId(), v);
@@ -38,25 +34,23 @@ public class Graph {
         }
     }
 
-    // Add edge between two vertices
+    //add edge between two vertices
     public void addEdge(int from, int to) {
 
-        // Check if both vertices exist
+        //checks if exists
         if (vertices.containsKey(from)
                 && vertices.containsKey(to)) {
 
-            // Add neighbor into adjacency list
+            //ads neighbor
             adjacencyList.get(from).add(to);
 
-            // Create edge object
+            //creates edge object
             Edge edge = new Edge(vertices.get(from), vertices.get(to));
 
-            // Store edge
             edges.add(edge);
         }
     }
 
-    // Print graph structure
     public void printGraph() {
 
         System.out.println("Graph Structure:");
@@ -69,8 +63,8 @@ public class Graph {
         }
     }
 
-    // Breadth-First Search (BFS)
-    // Explores graph level-by-level
+    //Breadth-First Search (BFS)
+    // Explores graph level by level
     public void bfs(int start) {
 
         HashSet<Integer> visited = new HashSet<>();
@@ -89,10 +83,10 @@ public class Graph {
 
             System.out.print(current + " ");
 
-            // Visit neighbors
+            //visits
             for (int neighbor : adjacencyList.get(current)) {
 
-                // Process only unvisited neighbors
+                //process only unvisited ones
                 if (!visited.contains(neighbor)) {
 
                     visited.add(neighbor);
@@ -118,19 +112,18 @@ public class Graph {
         System.out.println();
     }
 
-    // Recursive DFS helper method
+    //helper method
     private void dfsRecursive(int current, HashSet<Integer> visited) {
 
-        // Mark current vertex as visited
+        //marks current vertex as visited
         visited.add(current);
 
-        // Print current vertex
         System.out.print(current + " ");
 
-        // Visit neighbors
+        //visit neighbors
         for (int neighbor : adjacencyList.get(current)) {
 
-            // Process only unvisited neighbors
+            //process only unvisited neighbors
             if (!visited.contains(neighbor)) {
 
                 dfsRecursive(neighbor, visited);

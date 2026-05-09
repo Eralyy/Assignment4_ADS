@@ -1,15 +1,13 @@
 public class Experiment {
 
-    // Stores BFS execution time
+    //stores time
     private long bfsTime;
 
-    // Stores DFS execution time
     private long dfsTime;
 
-    // Run BFS and DFS traversals
+    //bfs and dfs traversals
     public void runTraversals(Graph g) {
 
-        // Measure BFS execution time
         long bfsStart = System.nanoTime();
 
         g.bfs(1);
@@ -19,8 +17,6 @@ public class Experiment {
         bfsTime = bfsEnd - bfsStart;
 
 
-
-        // Measure DFS execution time
         long dfsStart = System.nanoTime();
 
         g.dfs(1);
@@ -30,7 +26,7 @@ public class Experiment {
         dfsTime = dfsEnd - dfsStart;
     }
 
-    // Run experiment for one graph
+    //experiment for 1 graph
     public void runMultipleTests(Graph g) {
 
         System.out.println("--------------------------------");
@@ -40,7 +36,6 @@ public class Experiment {
         printResults();
     }
 
-    // Print performance comparison
     public void printResults() {
 
         System.out.println();
@@ -50,7 +45,6 @@ public class Experiment {
 
         System.out.println("DFS Time: " + dfsTime + " ns");
 
-        // Compare execution times
         if (bfsTime < dfsTime) {
 
             System.out.println("BFS was faster in this experiment.");
